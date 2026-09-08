@@ -1,0 +1,59 @@
+.status {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: min(100%, 460px);
+  min-height: 78px;
+  padding: 12px 0;
+  color: var(--text);
+}
+
+.emblem {
+  display: grid;
+  flex: 0 0 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--blue) 22%, transparent);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--blue) 8%, transparent);
+  color: var(--blue);
+}
+
+.copy { display: grid; flex: 1; min-width: 0; gap: 5px; }
+.heading { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; font-size: 13px; font-weight: 580; line-height: 1.8; }
+.hint { color: var(--muted); font-size: 11px; line-height: 1.85; }
+.elapsed { align-self: flex-start; margin-top: 6px; color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.dots { display: inline-flex; align-items: center; gap: 3px; height: 10px; }
+.dots i { width: 3px; height: 3px; border-radius: 50%; background: var(--blue); opacity: .5; animation: breathe 1.5s ease-in-out infinite; }
+.dots i:nth-child(2) { animation-delay: .16s; }
+.dots i:nth-child(3) { animation-delay: .32s; }
+
+.status[data-mode="image"] {
+  min-height: 112px;
+  padding: 19px 16px 25px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  overflow: hidden;
+}
+.track { position: absolute; inset-inline: 0; bottom: 0; height: 2px; background: color-mix(in srgb, var(--blue) 10%, transparent); overflow: hidden; }
+.track i { position: absolute; width: 32%; height: 100%; border-radius: 99px; background: var(--blue); opacity: .6; animation: traverse 2.4s ease-in-out infinite; }
+.status[data-paused] * { animation-play-state: paused !important; }
+
+@keyframes breathe { 0%, 70%, 100% { opacity: .35; transform: translateY(0); } 35% { opacity: .95; transform: translateY(-2px); } }
+@keyframes traverse { 0% { transform: translateX(-110%); } 100% { transform: translateX(420%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .dots i, .track i { animation: none; }
+  .dots i { opacity: .7; }
+  .track i { width: 100%; opacity: .25; }
+}
+
+@media (max-width: 440px) {
+  .status { gap: 10px; }
+  .status[data-mode="image"] { padding-inline: 12px; }
+  .emblem { flex-basis: 35px; height: 35px; border-radius: 11px; }
+  .heading { font-size: 12px; }
+  .hint { font-size: 10px; }
+}

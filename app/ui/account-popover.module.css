@@ -1,0 +1,240 @@
+/* The account menu remains anchored even inside clipped or transformed shells. */
+.layer {
+  --workspace-accent: #4b87ff;
+  --workspace-accent-strong: #306cec;
+  --workspace-accent-soft: color-mix(in srgb, var(--workspace-accent) 14%, transparent);
+  --workspace-focus: color-mix(in srgb, var(--workspace-accent) 48%, transparent);
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  color: var(--text);
+}
+
+.card {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  inline-size: min(20rem, calc(100vw - 1.5rem));
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  border: 1px solid color-mix(in srgb, var(--text) 13%, transparent);
+  border-radius: 1.25rem;
+  background: var(--surface-solid, #131a25);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .3), 0 3px 10px rgba(0, 0, 0, .1), inset 0 1px 0 rgba(255, 255, 255, .06);
+  pointer-events: auto;
+  visibility: hidden;
+  isolation: isolate;
+}
+
+.card[data-positioned="true"] {
+  visibility: visible;
+  animation: account-enter .18s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+@supports (backdrop-filter: blur(1px)) {
+  .card {
+    background: color-mix(in srgb, var(--surface-solid) 89%, transparent);
+    backdrop-filter: blur(28px) saturate(145%);
+    -webkit-backdrop-filter: blur(28px) saturate(145%);
+  }
+}
+
+.card:focus-visible,
+.layer button:focus-visible,
+.layer a:focus-visible {
+  outline: 2px solid var(--workspace-accent);
+  outline-offset: -2px;
+}
+
+.card .header {
+  gap: .375rem;
+  flex: 0 0 auto;
+  padding: 1rem .875rem .9375rem;
+  border-color: color-mix(in srgb, var(--text) 8%, transparent);
+}
+
+.card .quota {
+  gap: .75rem;
+  flex: 0 0 auto;
+  padding: .9375rem 1.0625rem;
+  background: color-mix(in srgb, var(--workspace-accent) 3%, transparent);
+}
+
+.card .menu {
+  padding: .5rem;
+  gap: .1875rem;
+}
+
+.card .item {
+  min-block-size: 3.25rem;
+  padding: .5rem .5625rem;
+  border-radius: .8125rem;
+  transition: background-color .16s ease;
+}
+
+.card .item:hover,
+.card .item:focus-visible {
+  background: color-mix(in srgb, var(--workspace-accent) 9%, transparent);
+}
+
+.card .footer {
+  position: static;
+  flex: 0 0 auto;
+  padding: .75rem .875rem;
+  background: transparent;
+}
+
+.layer .dialogLayer {
+  position: fixed;
+  pointer-events: auto;
+  padding: 1rem;
+  place-items: center;
+}
+
+.layer .dialog {
+  inline-size: min(26rem, 100%);
+  max-block-size: min(85dvh, 44rem);
+  border-color: color-mix(in srgb, var(--text) 12%, transparent);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, .3);
+  border-radius: 1.25rem;
+}
+
+.accountTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  min-block-size: 2.625rem;
+  max-inline-size: 11rem;
+  padding: .3125rem .625rem;
+  border: 1px solid var(--line);
+  border-radius: .75rem;
+  background: color-mix(in srgb, var(--surface-solid) 75%, transparent);
+  color: var(--text);
+  cursor: pointer;
+  transition: background-color .16s ease, border-color .16s ease;
+}
+
+.accountTrigger:hover,
+.accountTrigger[aria-expanded="true"] {
+  border-color: color-mix(in srgb, #4b87ff 60%, var(--line));
+  background: color-mix(in srgb, #4b87ff 12%, var(--surface-solid));
+}
+
+.accountTrigger:focus-visible {
+  outline: 2px solid #4b87ff;
+  outline-offset: 3px;
+}
+
+.triggerAvatar {
+  display: inline-grid;
+  place-items: center;
+  inline-size: 1.8125rem;
+  block-size: 1.8125rem;
+  flex: 0 0 auto;
+  border-radius: .5rem;
+  background: color-mix(in srgb, #4b87ff 18%, var(--surface-solid));
+  color: var(--text);
+  font-weight: 700;
+  font-size: .75rem;
+}
+
+.triggerName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: .75rem;
+  font-weight: 620;
+}
+
+.triggerChevron {
+  flex: 0 0 auto;
+  transition: transform .16s ease;
+}
+
+.accountTrigger[aria-expanded="true"] .triggerChevron { transform: rotate(180deg); }
+
+:global([data-theme="light"]) .layer {
+  --workspace-accent: #306cec;
+  --workspace-accent-strong: #2558c9;
+}
+
+.card .avatar {
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  border: 1px solid color-mix(in srgb, var(--workspace-accent) 28%, transparent);
+  border-radius: .8125rem;
+  background: color-mix(in srgb, var(--workspace-accent) 14%, var(--surface-solid));
+  color: var(--workspace-accent);
+  font-weight: 750;
+  box-shadow: none;
+}
+
+.card .identityText { gap: .1875rem; }
+.card .identityText b { font-size: .875rem; }
+.card .identityText small { color: var(--muted); font-size: .6875rem; }
+.card .itemIcon {
+  inline-size: 2.125rem;
+  block-size: 2.125rem;
+  border-radius: .625rem;
+  border-color: transparent;
+  background: color-mix(in srgb, var(--text) 4%, transparent);
+  color: var(--muted);
+  transition: color .16s ease, background-color .16s ease;
+}
+.card .item:hover .itemIcon, .card .item:focus-visible .itemIcon {
+  color: var(--workspace-accent);
+  background: color-mix(in srgb, var(--workspace-accent) 12%, transparent);
+}
+.card .itemText { gap: .125rem; }
+.card .itemText b { font-size: .8125rem; font-weight: 620; }
+.card .itemText small { color: var(--muted); font-size: .625rem; }
+.layer .quotaRow { gap: .4375rem; }
+.layer .quotaText span { color: var(--muted); font-size: .6875rem; }
+.layer .quotaText small { color: var(--muted); font-size: .625rem; }
+.layer .quotaRow .quotaTrack { block-size: .3125rem; background: color-mix(in srgb, var(--text) 8%, transparent); }
+.layer .quotaRow .quotaTrack i { background: var(--workspace-accent); }
+.layer .quotaRow .quotaTrack[data-level="high"] i { background: #d9a449; }
+.layer .quotaRow .quotaTrack[data-level="full"] i { background: #e16f79; }
+:global([data-theme="light"]) .layer .quotaRow .quotaTrack[data-level="high"] i { background: #a56e15; }
+:global([data-theme="light"]) .layer .quotaRow .quotaTrack[data-level="full"] i { background: #c34456; }
+
+/* Long usernames and emails must stay within the narrow mobile dialog. */
+.dialog .field { min-inline-size: 0; }
+.dialog .field > b { min-inline-size: 0; overflow-wrap: anywhere; }
+.dialog .fieldValue { min-inline-size: 0; }
+.dialog .fieldValue > b { min-inline-size: 0; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dialog .fieldValue > button { flex-shrink: 0; }
+
+@keyframes account-enter {
+  from { opacity: 0; transform: translateY(3px) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 640px) {
+  .accountTrigger { padding: .25rem; min-block-size: 2.625rem; inline-size: 2.625rem; justify-content: center; }
+  .triggerName, .triggerChevron { display: none; }
+  .layer .dialogLayer { padding: .75rem; }
+  .layer .dialog { max-block-size: calc(100dvh - 1.5rem); }
+  .layer .dialog input:not([type="checkbox"]) { min-inline-size: 0; inline-size: 100%; font-size: 16px; }
+}
+
+:global([data-motion="reduced"]) .card,
+:global([data-motion="reduced"]) .dialog,
+:global([data-motion="reduced"]) .layer *,
+:global([data-motion="reduced"]) .accountTrigger,
+:global([data-motion="reduced"]) .triggerChevron { animation: none; transition: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .card[data-positioned="true"], .layer .dialog, .layer *, .accountTrigger, .triggerChevron { animation: none; transition: none; }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .card { background: var(--surface-solid); backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+
+@media (forced-colors: active) {
+  .card { border: 1px solid CanvasText; background: Canvas; backdrop-filter: none; }
+  .accountTrigger { border: 1px solid ButtonText; }
+}

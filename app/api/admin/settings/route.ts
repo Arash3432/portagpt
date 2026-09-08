@@ -1,0 +1,15 @@
+import { z } from "zod";
+import { adminMutationError, adminReadError, requireAdminRead, writeAdminAudit } from "../../../../lib/admin";
+import { db } from "../../../../lib/db";
+import { getEnv } from "../../../../lib/env";
+import { jsonError, noStoreJson, parseJsonBody } from "../../../../lib/http";
+import { assertSafeMutation } from "../../../../lib/security";
+import { requireElevatedAdmin } from "../../../../lib/session";
+
+export const runtime="nodejs";
+const schema=z.object({paused:z.boolean(),message:z.string().max(240),globalDailyCapUsd:z.number().min(0.10).max(100000),usdTomanRate:z.number().int().min(10_000).max(10_000_000),maxApiCostShare:z.number().min(0.05).max(0.40),warnAtPercent:z.number().int().min(50).max(99)});
+
+async function state(){const rows=await db()<Array<{key:string;value:Record<string,unknown>;updated_at:string}>>`select key,value,updated_at from app_settings where key in('service_status','cost_controls')`;const service=rows.find((row)=>row.key==='service_status')?.value||{};const costs=rows.find((row)=>row.key==='cost_controls')?.value||{};const env=getEnv();return{paused:service.paused===true,message:typeof service.message==='string'?service.message:'',globalDailyCapUsd:Number(costs.globalDailyCapUsd||env.GLOBAL_DAILY_COST_CAP_USD),usdTomanRate:Number(costs.usdTomanRate||env.USD_TOMAN_RATE),maxApiCostShare:Number(costs.maxApiCostShare||env.MAX_API_COST_SHARE),warnAtPercent:Number(costs.warnAtPercent||80),security:{ipAllowlistEnabled:Boolean(env.ADMIN_IP_ALLOWLIST),vaultEnabled:Boolean(env.CONFIG_ENCRYPTION_KEY),adminReauthMinutes:env.ADMIN_REAUTH_MINUTES,providerHostAllowlist:env.AI_PROVIDER_HOST_ALLOWLIST}};}
+
+export async function GET(request:Request){try{await requireAdminRead(request);return noStoreJson(await state());}catch(error){return adminReadError(error);}}
+export async function PATCH(request:Request){try{assertSafeMutation(request);const admin=await requireElevatedAdmin(request);const parsed=schema.safeParse(await parseJsonBody(request,4_000));if(!parsed.success)return jsonError("تنظیمات هزینه معتبر نیست.",400);const before=await state();const sql=db();await sql.begin(async(tx)=>{await tx`insert into app_settings(key,value,updated_by) values('service_status',${sql.json({paused:parsed.data.paused,message:parsed.data.message})},${admin.userId}) on conflict(key) do update set value=excluded.value,updated_by=excluded.updated_by,updated_at=now()`;await tx`insert into app_settings(key,value,updated_by) values('cost_controls',${sql.json({globalDailyCapUsd:parsed.data.globalDailyCapUsd,usdTomanRate:parsed.data.usdTomanRate,maxApiCostShare:parsed.data.maxApiCostShare,warnAtPercent:parsed.data.warnAtPercent})},${admin.userId}) on conflict(key) do update set value=excluded.value,updated_by=excluded.updated_by,updated_at=now()`;});await writeAdminAudit({adminUserId:admin.userId,action:"settings.cost-controls",request,targetType:"setting",targetId:"cost_controls",before,after:parsed.data});return noStoreJson({ok:true,...await state()});}catch(error){return adminMutationError(error,"تنظیمات هزینه ذخیره نشد.");}}

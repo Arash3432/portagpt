@@ -1,0 +1,131 @@
+/* Portal 1.7 — shared color, type and interaction foundations.
+   Page layouts live in CSS modules; these tokens also cover dialogs and errors. */
+:root {
+  --bg: #0c1018;
+  --bg-elevated: rgba(18, 25, 37, .96);
+  --surface: rgba(184, 207, 244, .045);
+  --surface-strong: rgba(184, 207, 244, .085);
+  --surface-solid: #131a25;
+  --text: #eef3fb;
+  --muted: #a2afc3;
+  --soft: #8997ad;
+  --line: rgba(182, 204, 237, .13);
+  --blue: #4b87ff;
+  --violet: #7797ed;
+  --red: #fa8b98;
+  --amber: #e6b96c;
+  --shadow: 0 24px 72px rgba(0, 5, 16, .32);
+  --portal-blue: var(--blue);
+  --portal-violet: var(--violet);
+  --portal-red: var(--red);
+  --portal-mint: #7bdab0;
+  --workspace-accent: var(--blue);
+  --focus-ring: #87b0ff;
+  --ink: #0c1018;
+  --paper: #f5f4f0;
+  --paper-strong: #fffefa;
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #f5f4f0;
+  --bg-elevated: rgba(255, 254, 250, .97);
+  --surface: rgba(30, 55, 89, .035);
+  --surface-strong: rgba(30, 55, 89, .07);
+  --surface-solid: #fffefa;
+  --text: #17243a;
+  --muted: #526176;
+  --soft: #647186;
+  --line: rgba(29, 51, 83, .14);
+  --blue: #306cec;
+  --violet: #5b73b8;
+  --red: #bc344f;
+  --amber: #94611b;
+  --portal-mint: #237756;
+  --focus-ring: #306cec;
+  --shadow: 0 24px 72px rgba(39, 51, 70, .12);
+  color-scheme: light;
+}
+
+html { scroll-padding-top: 100px; }
+body { line-height: 1.65; }
+button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
+button, a { touch-action: manipulation; }
+button:disabled { cursor: not-allowed; }
+input, textarea { accent-color: var(--blue); caret-color: var(--blue); }
+input::placeholder, textarea::placeholder { color: var(--soft); opacity: 1; }
+::selection { background: color-mix(in srgb, var(--blue) 30%, transparent); color: var(--text); }
+:where(button, a, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--blue) 10%, transparent);
+}
+
+.public-primary, .button--primary, .button--glow {
+  color: #fff;
+  background: #306cec;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(28, 84, 203, .17);
+}
+.public-primary:hover, .button--primary:hover, .button--glow:hover {
+  background: #255cce;
+  transform: none;
+  box-shadow: 0 6px 18px rgba(28, 84, 203, .22);
+}
+.public-secondary { background: var(--surface); border-color: var(--line); color: var(--text); }
+.public-secondary:hover { transform: none; background: var(--surface-strong); box-shadow: none; }
+.public-primary:disabled, .public-secondary:disabled { opacity: .5; transform: none; box-shadow: none; }
+.public-primary, .public-secondary, .ui-danger-button { min-height: 44px; font-size: 13px; border-radius: 12px; }
+.brand strong { color: var(--blue); }
+
+.auth-overlay, .ui-confirm-overlay { background: rgba(3, 9, 19, .56); backdrop-filter: blur(9px); }
+.auth-card--credentials, .ui-confirm-card {
+  background: var(--surface-solid);
+  border-color: var(--line);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+.auth-card--credentials { padding: 32px; }
+.auth-card--credentials h2 { font-size: 27px; line-height: 1.55; letter-spacing: -.025em; }
+.auth-card--credentials > p { font-size: 13px; line-height: 1.9; }
+.auth-card--credentials label { font-size: 12px; }
+.auth-tabs { border-radius: 12px; }
+.auth-tabs button { min-height: 42px; font-size: 13px; }
+.auth-input-wrap { min-height: 50px; border-radius: 12px; }
+.auth-card .auth-input-wrap input { min-height: 48px; font-size: 16px; }
+.auth-card .auth-input-wrap:focus-within { border-color: var(--blue); }
+.auth-submit { background: #306cec !important; font-size: 13px !important; min-height: 48px; }
+.auth-submit:hover:not(:disabled) { background: #255cce !important; }
+.auth-switch-row, .auth-switch-row button, .auth-otp-option { font-size: 12px; }
+.auth-message { font-size: 12px; line-height: 1.85; }
+.auth-card--credentials > small { font-size: 11px; }
+.ui-confirm-card h2 { line-height: 1.65; }
+.ui-confirm-card p { font-size: 13px; line-height: 1.9; }
+.ui-toast { border-color: var(--line); background: var(--bg-elevated); border-radius: 16px; box-shadow: var(--shadow); }
+.ui-toast > p { font-size: 13px; line-height: 1.8; }
+.ui-toast > button { min-width: 40px; min-height: 40px; }
+
+.portal-loading { background: var(--bg); }
+.portal-loading-mark { width: 68px; height: 68px; border-radius: 21px; box-shadow: none; }
+.portal-loading > span { font-size: 12px; }
+.portal-loading > i { height: 2px; width: 96px; }
+.portal-loading > i > b { background: var(--blue); }
+.system-state { background: radial-gradient(ellipse at 50% 20%, color-mix(in srgb, var(--blue) 8%, transparent), transparent 55%), var(--bg); }
+.system-state section { max-width: 500px; border-radius: 24px; box-shadow: var(--shadow); }
+.system-state span { color: var(--blue); }
+
+@media (max-width: 600px) {
+  .auth-overlay, .ui-confirm-overlay { padding: 12px; }
+  .auth-card--credentials { padding: 26px 20px; border-radius: 22px; }
+  .ui-confirm-card { border-radius: 22px; }
+  .ui-toast { max-width: calc(100vw - 24px); }
+}
+
+@media (forced-colors: active) {
+  :where(button, a, input, textarea, select):focus-visible { outline: 2px solid Highlight; }
+  .public-primary, .auth-submit { border: 1px solid ButtonText; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
