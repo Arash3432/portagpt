@@ -1,0 +1,25 @@
+{
+  "name": "Portal AI",
+  "short_name": "Portal AI",
+  "description": "یک درگاه امن برای بهترین مدل‌های هوش مصنوعی",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "/app?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0c1018",
+  "theme_color": "#0c1018",
+  "categories": [
+    "productivity",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "/portal-ai-logo.png",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
