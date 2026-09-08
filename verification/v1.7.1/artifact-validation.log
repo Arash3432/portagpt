@@ -1,0 +1,6 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> portal-ai@1.7.1 validate:artifact
+> bash scripts/validate-artifact.sh
+
+Validated Portal AI 1.7.1 standalone build, 7 migrations and Liara configuration.

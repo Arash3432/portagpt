@@ -1,0 +1,16 @@
+PASS URL draft stays editable plain text, is removed from URL, and signed-in login intent does not open auth
+PASS private fragment draft wins over legacy query, clears sensitive URL data and never auto-sends
+PASS fragment draft survives the authentication dialog and successful sign-in without auto-sending
+PASS failed history request recovers through the visible retry control
+PASS image-mode URL draft is clamped to the image composer limit
+PASS landing composer rejects blank submission and preserves independent chat/code drafts
+PASS landing tabs support keyboard selection and image suggestions populate and focus the editor
+PASS landing Ctrl+Enter navigates with a private fragment draft and performs no AI generation
+PASS landing tab arrow direction follows Persian RTL layout
+PASS settings model failure exposes retry and recovers the model selector
+PASS settings light theme applies immediately, persists and exposes selection accessibly
+PASS chat preference changes show unsaved state, persist on save and clear dirty state
+PASS password visibility is an accessible toggle and restores password masking
+PASS account deletion requires explicit text, autofocuses confirmation and Escape restores trigger
+PASS account usage failure shows no fabricated meters, preserves successful device data and recovers on retry
+Completed 15 additional v17 DOM interaction checks.

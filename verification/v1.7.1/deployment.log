@@ -1,0 +1,53 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> portal-ai@1.7.1 deployment:check
+> node --test tests/deployment.test.mjs tests/migration-status.test.mjs tests/migration-compatibility.test.mjs tests/migration-report.test.mjs
+
+✔ production preflight accepts core configuration without optional SMS or storage (1.825155ms)
+✔ preflight normalizes copied quotes and whitespace without exposing their contents (0.730749ms)
+✔ production requires HTTPS origin with no credentials, path or query (0.529652ms)
+✔ preflight rejects weak, duplicate and example secrets and invalid encryption keys (0.925036ms)
+✔ preflight rejects wrong connection protocols and invalid numeric limits (0.425579ms)
+✔ partial object storage and wildcard administrator access cannot silently pass (5.012202ms)
+✔ migrations sort numerically and reject duplicate migration numbers (31.812834ms)
+✔ full migration history is checked before allowing pending migrations (4.992772ms)
+✔ only recoverable connection and lock errors are retried (0.260905ms)
+✔ migration failure logging never serializes database error messages or query values (0.333292ms)
+✔ production start rejects invalid configuration before trying migrations or starting HTTP (75.911541ms)
+✔ standalone startup cannot bypass production preflight with NODE_ENV=test (86.239191ms)
+✔ legacy compatibility retains the unavailable source as evidence only after complete canonical verification (28.938926ms)
+✔ compatibility rejects corrupt history and altered hashes before reading the schema (6.796215ms)
+✔ new releases cannot silently inherit the legacy compatibility exception (3.779992ms)
+✔ schema contract rejects missing ownership, identity, quota and audit protections (18.517714ms)
+✔ schema contract permits harmless extensions but rejects unreviewed write constraints (8.764171ms)
+SQL engine: PostgreSQL 18.3 (PGlite 0.5.8) on wasm32-unknown-emscripten, compiled by emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 3.1.74 (1092ec30a3fb1d46b1782ff1b4db5094d3d06ae5), 32-bit
+▶ real PostgreSQL executes canonical upgrade and verifies legacy restart without writes
+  ✔ reported legacy row starts twice and never mutates schema, history, users or model configuration (60.22659ms)
+  ✔ a canonical filename absent in an alternate lineage is checked without replay or invented history (26.954211ms)
+  ✔ all canonical names absent in an alternate lineage is checked without replay or invented history (29.951806ms)
+  ✔ unversioned compatible schema is checked without replay or invented history (36.541527ms)
+  ✔ equivalent renamed uniqueness is checked without replay or invented history (26.619927ms)
+  ✔ changed canonical checksum fails closed (3.306994ms)
+  ✔ removed turn uniqueness fails closed (21.815432ms)
+  ✔ disabled audit trigger fails closed (23.575361ms)
+  ✔ removed free plan fails closed (25.718386ms)
+  ✔ weakened quota constraint fails closed (19.793096ms)
+✔ real PostgreSQL executes canonical upgrade and verifies legacy restart without writes (2508.390317ms)
+✔ both reported missing filenames and arbitrary historical names use one schema verification path (24.73599ms)
+✔ a complete automatic report includes all historical and schema conflicts in one run (11.895404ms)
+✔ diagnostics never log connection values, SQL, user data or unsafe identifiers (0.655037ms)
+✔ invalid environment and connection failures do not trigger extra diagnostic database retries (0.240936ms)
+✔ status identifies the reported 005_workspace.sql incident without hiding canonical verification (34.863279ms)
+✔ status reports checksum changes even when an unknown history row is also present (13.611369ms)
+✔ status surfaces exact matching source content without silently accepting a rename (5.948904ms)
+✔ status distinguishes empty database, pending suffix, history gaps and duplicate history (3.295636ms)
+✔ status failure does not log supplied invalid connection values (66.295292ms)
+✔ status uses the same verified compatibility policy as startup and still identifies unavailable source (20.36477ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2728.066331

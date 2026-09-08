@@ -1,0 +1,14 @@
+PASS account popover anchors to clicked desktop trigger and stays compact
+PASS account menu supports first-item focus, arrow navigation and End
+PASS detail dialog Escape returns to menu, second Escape closes and restores trigger
+PASS outside pointer dismissal removes the account menu
+PASS narrow viewport clamps account menu within visible width
+PASS image download disables duplicate clicks, validates response and creates a downloadable filename
+PASS image unmount revokes object URLs and clears download timers
+PASS image download rejects HTML responses and shows a recoverable error
+PASS expired image session gives an actionable sign-in error
+PASS unmount aborts an in-flight image download
+PASS external image routes never render or enable downloads
+PASS stacked dialogs close one at a time and preserve scroll lock and focus restoration
+PASS clipboard denial is visible to users and assistive technology
+Completed 13 DOM interaction checks.

@@ -1,0 +1,77 @@
+{
+  "status": "passed",
+  "checks": 15,
+  "results": [
+    {
+      "route": "/",
+      "status": 200,
+      "securityHeaders": true
+    },
+    {
+      "route": "/app",
+      "status": 200,
+      "securityHeaders": true
+    },
+    {
+      "route": "compiled JavaScript",
+      "status": 200
+    },
+    {
+      "route": "/studio",
+      "status": 200,
+      "securityHeaders": true
+    },
+    {
+      "route": "/models",
+      "status": 200,
+      "securityHeaders": true
+    },
+    {
+      "route": "/plans",
+      "status": 200,
+      "securityHeaders": true
+    },
+    {
+      "route": "/account",
+      "status": 200,
+      "securityHeaders": true
+    },
+    {
+      "route": "/settings",
+      "status": 200,
+      "securityHeaders": true
+    },
+    {
+      "route": "/privacy",
+      "status": 200,
+      "securityHeaders": true
+    },
+    {
+      "route": "/terms",
+      "status": 200,
+      "securityHeaders": true
+    },
+    {
+      "route": "/admin",
+      "status": 200,
+      "accessDenied": true
+    },
+    {
+      "route": "/api/admin/overview",
+      "status": 404,
+      "accessDenied": true
+    },
+    {
+      "route": "unauthenticated image download",
+      "status": 401
+    },
+    {
+      "route": "anonymous session",
+      "status": 200
+    },
+    {
+      "route": "cross-origin chat mutation",
+      "status": 403
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+✔ production preflight accepts core configuration without optional SMS or storage (2.496015ms)
+✔ preflight normalizes copied quotes and whitespace without exposing their contents (0.687976ms)
+✔ production requires HTTPS origin with no credentials, path or query (0.584863ms)
+✔ preflight rejects weak, duplicate and example secrets and invalid encryption keys (0.558615ms)
+✔ preflight rejects wrong connection protocols and invalid numeric limits (0.623129ms)
+✔ partial object storage and wildcard administrator access cannot silently pass (5.511357ms)
+✔ migrations sort numerically and reject duplicate migration numbers (11.933677ms)
+✔ full migration history is checked before allowing pending migrations (3.347001ms)
+✔ only recoverable connection and lock errors are retried (0.25695ms)
+✔ migration failure logging never serializes database error messages or query values (0.307534ms)
+✔ production start rejects invalid configuration before trying migrations or starting HTTP (55.441155ms)
+✔ standalone startup cannot bypass production preflight with NODE_ENV=test (55.078309ms)
+✔ legacy compatibility retains the unavailable source as evidence only after complete canonical verification (9.877982ms)
+✔ legacy compatibility never permits missing canonical migrations, altered hashes or another unknown source (4.935882ms)
+✔ new releases cannot silently inherit the legacy compatibility exception (4.393626ms)
+✔ schema contract rejects missing ownership, identity, quota and audit protections (9.894787ms)
+✔ schema contract permits harmless extensions but rejects unreviewed write constraints (2.585858ms)
+SQL engine: PostgreSQL 18.3 (PGlite 0.5.8) on wasm32-unknown-emscripten, compiled by emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 3.1.74 (1092ec30a3fb1d46b1782ff1b4db5094d3d06ae5), 32-bit
+▶ real PostgreSQL executes canonical upgrade and verifies legacy restart without writes
+  ✔ reported legacy row starts twice and never mutates schema, history, users or model configuration (46.725648ms)
+  ✔ missing canonical 005 fails closed (3.383586ms)
+  ✔ changed canonical checksum fails closed (2.58074ms)
+  ✔ another unknown migration fails closed (2.799854ms)
+  ✔ removed turn uniqueness fails closed (17.245098ms)
+  ✔ disabled audit trigger fails closed (19.508219ms)
+  ✔ weakened quota constraint fails closed (16.23687ms)
+✔ real PostgreSQL executes canonical upgrade and verifies legacy restart without writes (1995.630565ms)
+✔ status identifies the reported 005_workspace.sql incident without hiding canonical verification (10.300517ms)
+✔ status reports checksum changes even when an unknown history row is also present (3.15656ms)
+✔ status surfaces exact matching source content without silently accepting a rename (2.494563ms)
+✔ status distinguishes empty database, pending suffix, history gaps and duplicate history (2.121031ms)
+✔ status failure does not log supplied invalid connection values (63.626398ms)
+✔ status uses the same verified compatibility policy as startup and still identifies unavailable source (12.360678ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2149.151236

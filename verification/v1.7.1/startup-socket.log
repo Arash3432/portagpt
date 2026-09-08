@@ -1,0 +1,18 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> portal-ai@1.7.1 deployment:startup
+> node --test tests/startup-socket.test.mjs
+
+▶ production startup over PostgreSQL wire protocol resumes compatible branches and logs all incompatible metadata
+  ✔ previous startup reproduces the reported missing security identity failure (94.983193ms)
+  ✔ current standalone starts twice and serves the app while preserving history and configuration (1217.85995ms)
+  ✔ failed boot automatically reports all missing sources and both schema problems without terminal access (142.644985ms)
+✔ production startup over PostgreSQL wire protocol resumes compatible branches and logs all incompatible metadata (3612.293276ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3781.694585

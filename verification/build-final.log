@@ -1,0 +1,76 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> portal-ai@1.6.0 build
+> next build && node scripts/prepare-standalone.mjs
+
+▲ Next.js 16.3.4 (Turbopack)
+✓ Running next.config.ts took 21ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 754ms
+  Running TypeScript ...
+  Finished TypeScript in 4.3s ...
+  Collecting page data using 1 worker ...
+  Generating static pages using 1 worker (0/42) ...
+  Generating static pages using 1 worker (10/42) 
+  Generating static pages using 1 worker (20/42) 
+  Generating static pages using 1 worker (31/42) 
+✓ Generating static pages using 1 worker (42/42) in 382ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /account
+├ ƒ /admin
+├ ƒ /api/account/delete
+├ ƒ /api/account/password
+├ ƒ /api/account/profile
+├ ƒ /api/account/sessions
+├ ƒ /api/account/usage
+├ ƒ /api/admin/models
+├ ƒ /api/admin/overview
+├ ƒ /api/admin/plans
+├ ƒ /api/admin/provider
+├ ƒ /api/admin/providers
+├ ƒ /api/admin/security
+├ ƒ /api/admin/service
+├ ƒ /api/admin/settings
+├ ƒ /api/admin/step-up
+├ ƒ /api/admin/users
+├ ƒ /api/admin/users/[id]
+├ ƒ /api/assets/[id]
+├ ƒ /api/auth/capabilities
+├ ƒ /api/auth/logout
+├ ƒ /api/auth/otp/request
+├ ƒ /api/auth/otp/verify
+├ ƒ /api/auth/password/login
+├ ƒ /api/auth/password/register
+├ ƒ /api/auth/session
+├ ƒ /api/billing/checkout
+├ ƒ /api/chat
+├ ƒ /api/conversations
+├ ƒ /api/conversations/[id]
+├ ƒ /api/conversations/[id]/export
+├ ƒ /api/health
+├ ƒ /api/images
+├ ƒ /api/images/[id]
+├ ƒ /api/models
+├ ƒ /api/plans
+├ ƒ /api/uploads/complete
+├ ƒ /api/uploads/presign
+├ ○ /app
+├ ○ /models
+├ ○ /plans
+├ ○ /privacy
+├ ○ /settings
+├ ○ /studio
+└ ○ /terms
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+Portal AI standalone server and static assets are ready.

@@ -1,0 +1,1 @@
+Validated Portal AI 1.6.0 standalone build, 7 migrations and Liara configuration.

@@ -1,0 +1,160 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> portal-ai@1.7.1 test
+> npm run security:check && npm run deployment:check && npm run typecheck && npm run lint
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> portal-ai@1.7.1 security:check
+> node --import tsx --test tests/*.test.ts tests/*.test.tsx
+
+✔ owned asset paths reject external origins, executable schemes and ambiguous routes (5.705977ms)
+✔ raster images preview inline and the same asset can explicitly download as attachment (4.281055ms)
+✔ active and unrecognized file content is always downloaded as inert binary (0.833139ms)
+✔ download filenames preserve localized names while removing controls and path delimiters (1.880554ms)
+✔ invalid asset length metadata never produces an unsafe content-length (3.233841ms)
+▶ the browser session store reconciles network responses and authentication races
+  ✔ concurrent consumers share one request and receive one verified identity (4.259974ms)
+  ✔ a server outage or malformed body cannot masquerade as logout (0.951423ms)
+  ✔ login cancels an old account check and ignores its late response (0.639003ms)
+  ✔ logout cannot be reversed by a delayed authenticated response (0.629589ms)
+  ✔ other-tab session changes force a check and clear an invalid identity (0.976701ms)
+  ✔ a timed-out check becomes recoverable and online triggers a new check (0.758889ms)
+  ✔ returning to a visible document refreshes an aged session (1.202574ms)
+  ✔ unmount cancels unused requests and stale completion cannot clear the cached identity (1.833294ms)
+✔ the browser session store reconciles network responses and authentication races (14.873701ms)
+✔ health stays bounded during Redis reconnection and reports degraded state honestly (3.936818ms)
+✔ health requires the database and puts a cancellation deadline on Redis PING (0.869873ms)
+✔ markdown links preserve the intended label and use the actual HTTP destination (9.242483ms)
+✔ a dangerous markdown label cannot become a navigation destination (0.900889ms)
+✔ unsafe or misleading markdown destinations stay inert text (2.266724ms)
+✔ assistant HTML, scripts, image handlers and code are escaped without execution (2.265222ms)
+✔ tables produce semantic cells with alignment, escaped pipes and safe inline formatting (3.116627ms)
+✔ invalid table delimiters stay readable and short rows keep the header column count (2.216669ms)
+✔ an in-progress streamed code fence renders readable literal code (0.919176ms)
+✔ long and tilde fences preserve nested shorter fences as code (1.655973ms)
+✔ ordered lists preserve their starting number and paragraph separators render correctly (0.876443ms)
+✔ malformed forwarding slots never shift attacker input into the trusted IP (5.425754ms)
+✔ equivalent IPv6 spellings and mapped IPv4 do not lock out allowed administrators (0.566396ms)
+✔ malformed hex hashes cannot compare equal or crash timing-safe comparison (0.2576ms)
+✔ session cookies accept only the issued token lengths and encoding (0.79973ms)
+✔ cross-site requests and untrusted origins cannot mutate an IP-authorized account (3.737304ms)
+✔ JSON bodies enforce exact media types and reject malformed UTF-8 (6.715321ms)
+✔ chunked upstream downloads stop at the byte limit and cancel the source (1.011361ms)
+✔ oversized declared upstream responses are cancelled before buffering (0.317458ms)
+✔ image URLs need an allowlisted HTTPS public hostname without credentials or redirect ports (0.539546ms)
+✔ image signature checks reject truncated PNG, fake RIFF and incomplete GIF headers (0.389474ms)
+✔ API failures preserve Headers and never turn security errors into service outages (1.582144ms)
+✔ protected mutation routes reject hostile origins before session, quota or provider work (2.925265ms)
+✔ Iranian phone normalization accepts localized digits and rejects malformed values (3.411092ms)
+✔ admin IP handling works behind a proxy without treating placeholders as wildcards (12.299643ms)
+✔ OTP and constant-time comparison primitives have safe shapes (0.782545ms)
+✔ password authentication uses a memory-hard salted hash and a Unicode-aware policy (429.63306ms)
+✔ email normalization is deterministic and rejects malformed identities (0.663058ms)
+✔ cost reservation includes both input and maximum output exposure (0.236639ms)
+✔ client components never reference provider secrets (20.377099ms)
+✔ payments fail closed and the Liara AI catalog has priced models (5.907174ms)
+✔ offline secret helper uses the browser CSPRNG and no network resources (7.620201ms)
+✔ database enforces immutable request ids and financial constraints (1.939682ms)
+✔ password-first auth protects the configured administrator from self-registration or OTP elevation (2.932326ms)
+✔ authenticated UI routes wait for session resolution instead of reopening credential dialogs (1.629824ms)
+✔ admin UI uses IP-gated data APIs without reopening credential dialogs (0.727713ms)
+✔ admin step-up compatibility route never processes credentials in IP-only mode (0.628127ms)
+✔ concurrent quota updates are conditional and OTP attempts are atomic (1.378394ms)
+✔ generated-image URLs are protected from SSRF (1.805914ms)
+✔ admin can be restricted to a trusted IP allowlist (4.988348ms)
+✔ provider endpoints require an allowlisted public hostname (0.732511ms)
+✔ private assets and service-worker caching fail closed (1.696843ms)
+✔ admin mutations use the IP-only administrator context (1.194231ms)
+✔ account security supports password rotation and session revocation (0.808763ms)
+✔ Liara private PostgreSQL does not force public TLS semantics (0.82007ms)
+✔ blank optional Liara variables are normalized and the validated startup is used (1.120864ms)
+✔ storage use independently validates endpoints after deployment preflight (1.807917ms)
+✔ Liara startup serves built assets without runtime filesystem writes (3.073294ms)
+✔ SSE survives every two-chunk boundary, including UTF-8, CRLF and final non-delimited event (13.058804ms)
+✔ SSE accepts LF, CRLF and bare CR without duplicate events or lost data whitespace (0.685301ms)
+✔ EOF flushes the final data line once, but does not manufacture a missing done event (2.469934ms)
+✔ SSE rejects malformed and terminally truncated UTF-8 instead of corrupting text (2.111935ms)
+✔ SSE buffer cap covers unterminated lines and accumulated multiline events (1.084219ms)
+✔ SSE cap resets after each complete event and comments do not accumulate (16.565957ms)
+✔ abortable delay removes its abort listener after resolution and does not reject later (9.420712ms)
+✔ abortable delay handles pre-aborted and mid-delay cancellation without retaining listeners (1.316493ms)
+✔ stream reveal keeps Persian, combining marks, emoji families and flags on grapheme boundaries (10.127505ms)
+✔ stream reveal catches up large bursts, respects reduced motion, and recovers replacement content (0.268626ms)
+✔ explicit theme choices beat stale resolved values from older releases before paint (3.608653ms)
+✔ system choice resolves from the device while legacy preferences remain supported (5.580342ms)
+✔ blocked browser storage does not prevent the page from rendering (1.17279ms)
+✔ history grouping uses local calendar dates and a fixed group order (2.488491ms)
+✔ style insertion preserves a draft and prevents duplicate or oversized additions (0.218493ms)
+✔ query drafts stay text and are capped to the actual composer limit (0.195238ms)
+ℹ tests 78
+ℹ suites 0
+ℹ pass 78
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1277.43664
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> portal-ai@1.7.1 deployment:check
+> node --test tests/deployment.test.mjs tests/migration-status.test.mjs tests/migration-compatibility.test.mjs tests/migration-report.test.mjs
+
+✔ production preflight accepts core configuration without optional SMS or storage (2.683869ms)
+✔ preflight normalizes copied quotes and whitespace without exposing their contents (0.586005ms)
+✔ production requires HTTPS origin with no credentials, path or query (0.590771ms)
+✔ preflight rejects weak, duplicate and example secrets and invalid encryption keys (0.424005ms)
+✔ preflight rejects wrong connection protocols and invalid numeric limits (0.666463ms)
+✔ partial object storage and wildcard administrator access cannot silently pass (5.833375ms)
+✔ migrations sort numerically and reject duplicate migration numbers (22.686545ms)
+✔ full migration history is checked before allowing pending migrations (7.234572ms)
+✔ only recoverable connection and lock errors are retried (0.497544ms)
+✔ migration failure logging never serializes database error messages or query values (0.551944ms)
+✔ production start rejects invalid configuration before trying migrations or starting HTTP (78.903149ms)
+✔ standalone startup cannot bypass production preflight with NODE_ENV=test (94.064698ms)
+✔ legacy compatibility retains the unavailable source as evidence only after complete canonical verification (15.140835ms)
+✔ compatibility rejects corrupt history and altered hashes before reading the schema (6.626295ms)
+✔ new releases cannot silently inherit the legacy compatibility exception (3.563401ms)
+✔ schema contract rejects missing ownership, identity, quota and audit protections (17.446912ms)
+✔ schema contract permits harmless extensions but rejects unreviewed write constraints (2.635508ms)
+SQL engine: PostgreSQL 18.3 (PGlite 0.5.8) on wasm32-unknown-emscripten, compiled by emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 3.1.74 (1092ec30a3fb1d46b1782ff1b4db5094d3d06ae5), 32-bit
+▶ real PostgreSQL executes canonical upgrade and verifies legacy restart without writes
+  ✔ reported legacy row starts twice and never mutates schema, history, users or model configuration (56.237465ms)
+  ✔ a canonical filename absent in an alternate lineage is checked without replay or invented history (27.632028ms)
+  ✔ all canonical names absent in an alternate lineage is checked without replay or invented history (24.128917ms)
+  ✔ unversioned compatible schema is checked without replay or invented history (31.764996ms)
+  ✔ equivalent renamed uniqueness is checked without replay or invented history (23.454142ms)
+  ✔ changed canonical checksum fails closed (3.132993ms)
+  ✔ removed turn uniqueness fails closed (18.680407ms)
+  ✔ disabled audit trigger fails closed (24.141776ms)
+  ✔ removed free plan fails closed (23.375066ms)
+  ✔ weakened quota constraint fails closed (17.719558ms)
+✔ real PostgreSQL executes canonical upgrade and verifies legacy restart without writes (2465.782186ms)
+✔ both reported missing filenames and arbitrary historical names use one schema verification path (20.199091ms)
+✔ a complete automatic report includes all historical and schema conflicts in one run (8.752963ms)
+✔ diagnostics never log connection values, SQL, user data or unsafe identifiers (1.234191ms)
+✔ invalid environment and connection failures do not trigger extra diagnostic database retries (0.171012ms)
+✔ status identifies the reported 005_workspace.sql incident without hiding canonical verification (13.23907ms)
+✔ status reports checksum changes even when an unknown history row is also present (15.016462ms)
+✔ status surfaces exact matching source content without silently accepting a rename (5.060494ms)
+✔ status distinguishes empty database, pending suffix, history gaps and duplicate history (17.678208ms)
+✔ status failure does not log supplied invalid connection values (77.917529ms)
+✔ status uses the same verified compatibility policy as startup and still identifies unavailable source (33.042783ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2674.099433
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> portal-ai@1.7.1 typecheck
+> tsc --noEmit
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> portal-ai@1.7.1 lint
+> eslint . --ignore-pattern .next
+
